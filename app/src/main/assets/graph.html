@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+/* Center the loader */
+#loader {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 1;
+  width: 150px;
+  height: 150px;
+  margin: -75px 0 0 -75px;
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #3498db;
+  width: 120px;
+  height: 120px;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+}
+
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Add animation to "page content" */
+.animate-bottom {
+  position: relative;
+  -webkit-animation-name: animatebottom;
+  -webkit-animation-duration: 1s;
+  animation-name: animatebottom;
+  animation-duration: 1s
+}
+
+@-webkit-keyframes animatebottom {
+  from { bottom:-100px; opacity:0 }
+  to { bottom:0px; opacity:1 }
+}
+
+@keyframes animatebottom {
+  from{ bottom:-100px; opacity:0 }
+  to{ bottom:0; opacity:1 }
+}
+
+#myDiv {
+  display: none;
+  text-align: center;
+}
+</style>
+    <meta charset="UTF-8">
+    <title>Graph</title>
+    <link rel="stylesheet" type="text/css" href="css/graph.css"/>
+    <script src="jquery-3.5.1.js"></script>
+    <script src="ajax.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+
+google.charts.load('current', {'packages':['corechart']});
+	  google.charts.setOnLoadCallback(drawChart);
+
+
+		function drawChart() {
+			var shopping;
+			var transport;
+			var restaurant;
+			var health;
+			var family;
+			var groceries;
+			var leisure;
+			var government;
+			var food;
+        $.ajax({
+			url: 'http://10.0.2.2:8080/costmanagement/rest/home/categories/'+ '1',
+			type: 'GET',
+			timeout: 30000,
+			contentType: "application/json; charset=utf-8",
+			success: function(jsonID){
+				console.log("GET CATS SUCCESS");
+				var parser =  JSON.parse(jsonID);
+				shopping = parser.Shopping;
+				transport = parser.Transport;
+				restaurant = parser.Restaurant;
+				health = parser.Health;
+				family = parser.Family;
+				groceries = parser.Groceries;
+				leisure = parser.Leisure;
+				government = parser.Government;
+				food = parser.Food;
+
+					var data = google.visualization.arrayToDataTable([
+						['Task', 'Hours per Day'],
+						['Shopping',   	parseFloat(shopping)],
+						['Transport',   parseFloat(transport)],
+						['Restaurant',  parseFloat(restaurant)],
+						['Health', 		parseFloat(health)],
+						['Family',   	parseFloat(family)],
+						['Groceries',	parseFloat(groceries)],
+						['Leisure',		parseFloat(leisure)],
+						['Government',	parseFloat(government)],
+						['Food',		parseFloat(food)]
+					]);
+
+					var options = {
+						title: 'My Monthly Expenses'
+					};
+
+					var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+					chart.draw(data, options);
+
+
+			},
+			error: function(){
+				vm.makeToast("Login Failed!");
+				console.log("GET CATS FAILED");
+			}
+        });
+		}
+    </script>
+
+</head>
+<body onload="myFunction()" style="margin:0;">
+
+<div id="loader"></div>
+<div id="piechart" style="width: 550px; height: 450px;"></div>
+<br/><br/>
+<button type="button" class="label red" id="backExpensesBtn">Back</button>
+
+
+<script>
+var myVar;
+
+function myFunction() {
+  myVar = setTimeout(showPage, 2000);
+}
+
+function showPage() {
+  document.getElementById("loader").style.display = "none";
+  document.getElementById("myDiv").style.display = "block";
+}
+</script>
+</body>
+</html>

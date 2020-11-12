@@ -1,0 +1,123 @@
+@import "compass/css3";
+body {
+    background: #141E30;
+    background: -webkit-linear-gradient(to right, #243B55, #141E30);
+    background: linear-gradient(to right, #243B55, #141E30);
+    color: #fff;
+}
+
+
+@mixin prefix ($property, $value,
+                 $moz:    true,
+                 $webkit: true,
+                 $o:      false,
+                 $ms:     true,
+                 $spec:   true) {
+    @if $moz    {    -moz-#{$property}: $value; }
+    @if $webkit { -webkit-#{$property}: $value; }
+    @if $o      {      -o-#{$property}: $value; }
+    @if $ms     {     -ms-#{$property}: $value; }
+    @if $spec   {         #{$property}: $value; }
+}
+
+// Animations
+
+@keyframes bar-fill {
+   0% { width: 0; }
+}
+@-webkit-keyframes bar-fill {
+   0% { width: 0; }
+}
+@-moz-keyframes bar-fill {
+   0% { width: 0; }
+}
+@-o-keyframes bar-fill {
+   0% { width: 0; }
+}
+
+// Graph stuff
+
+.bar-graph {
+		list-style: none;
+    margin: 30px 0px auto;
+}
+
+.bar-wrap {
+  @include prefix(border-radius,10px 10px 10px 10px);
+  background-color: rgba(0, 155, 202, 0.2);
+  border: 1px solid rgba(0, 155, 202, 0.8);
+  margin-bottom: 10px;
+}
+
+.bar-fill {
+  @include prefix(border-radius,10px 10px 10px 10px);
+  @include prefix(animation, bar-fill 1s);
+  background-color: rgba(0, 155, 202,1);
+  display: block;
+  height: 15px;
+  width: 0px;
+}
+
+// General stuff
+
+body {
+  background-color: #000;
+}
+
+p {
+  color: rgba(0, 155, 202,1);
+  font: {
+    family: 'Helvetica';
+    size: 20px;
+    weight: 100;
+  }
+  text-transform: uppercase;
+}
+
+.btn-dark-blue {
+    background: #7474BF;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #348AC7, #7474BF);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #348AC7, #7474BF); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    color: #fff;
+    border: 3px solid #eee;
+     padding: 10px;
+}
+
+.loader {
+  border: 16px solid #f3f3f3; /* Light grey */
+  border-top: 16px solid #3498db; /* Blue */
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loader {
+  border: 16px solid #f3f3f3; /* Light grey */
+  border-top: 16px solid #3498db; /* Blue */
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.label {
+  color: white;
+  padding: 13px;
+}
+
+.green {background-color: #4CAF50;} /* Green */
+.blue {background-color: #2196F3;} /* Blue */
+.orange {background-color: #ff9800;} /* Orange */
+.red {background-color: #f44336;} /* Red */
+.gray {background-color: #e7e7e7; color: black;} /* Gray */

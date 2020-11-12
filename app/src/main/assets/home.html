@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="ajax.js"></script>
+
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="css/home.css"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+/* Center the loader */
+#loader {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 1;
+  width: 150px;
+  height: 150px;
+  margin: -75px 0 0 -75px;
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #3498db;
+  width: 120px;
+  height: 120px;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+}
+
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Add animation to "page content" */
+.animate-bottom {
+  position: relative;
+  -webkit-animation-name: animatebottom;
+  -webkit-animation-duration: 1s;
+  animation-name: animatebottom;
+  animation-duration: 1s
+}
+
+@-webkit-keyframes animatebottom {
+  from { bottom:-100px; opacity:0 }
+  to { bottom:0px; opacity:1 }
+}
+
+@keyframes animatebottom {
+  from{ bottom:-100px; opacity:0 }
+  to{ bottom:0; opacity:1 }
+}
+
+#myDiv {
+  display: none;
+  text-align: center;
+}
+</style>
+</head>
+<body onload="myFunction()" style="margin:0;">
+
+<div id="loader"></div>
+
+</div>
+<br/>
+<br/>
+    <b>Choose month:</b>
+        <div class="container">
+            <div class="row" style="margin-top:10px;">
+                <div class="col-md-4 mx-auto col-12">
+                    <div class="b-select-wrap">
+                        <select class="form-control b-select" id="month">
+                            <option value = 1>January</option>
+                            <option value = 2>February</option>
+                            <option value = 3>March</option>
+                            <option value = 4>April</option>
+                            <option value = 5>May</option>
+                            <option value = 6>June</option>
+                            <option value = 7>July</option>
+                            <option value = 8>August</option>
+                            <option value = 9>September</option>
+                            <option value = 10>October</option>
+                            <option value = 11>November</option>
+                            <option value = 12>December</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+                <br/>
+                <b>Choose year:</b>
+                    <div class="container">
+                        <div class="row" style="margin-top:10px;">
+                            <div class="col-md-4 mx-auto col-12">
+                                <div class="b-select-wrap">
+                                    <select class="form-control b-select" id="year">
+                                        <option value=2020>2020</option>
+                                        <option value=2019>2019</option>
+                                        <option value=2018>2018</option>
+                                        <option value=2017>2017</option>
+                                        <option value=2016>2016</option>
+                                        <option value=2015>2015</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+<br/>
+<div>
+<input type="button" id="shower" value="SHOW" class="col btn btn-dark-blue btn-rounded">
+    </div>
+    <br/>
+<input type="text" id="money">
+<div>
+    <br/><br/>
+    <div class="col">
+        <a href="graph.html" id="graphbtn" class="col btn btn-dark-blue btn-rounded">View by graph</a>
+    </div>
+        <br/><br/>
+        <div class="col">
+            <a href="add_spend.html" class="col btn btn-dark-blue btn-rounded">Add spend</a>
+        </div>
+        <br/><br/>
+        <div class="col">
+            <a href="add_incoming.html" class="col btn btn-dark-blue btn-rounded">Add incoming</a>
+        </div>
+</div>
+<script>
+var myVar;
+
+function myFunction() {
+  myVar = setTimeout(showPage, 2000);
+}
+
+function showPage() {
+  document.getElementById("loader").style.display = "none";
+  document.getElementById("myDiv").style.display = "block";
+}
+        $("#graphbtn").on("click",function(){
+             vm.goToGraph();
+        });
+       </script>
+
+</body>
+</html>

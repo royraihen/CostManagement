@@ -1,0 +1,67 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
+<link rel="stylesheet" type="text/css" href="css/add_spend_or_incoming.css"/>
+<head>
+    <title>Title</title>
+    <script src="jquery-3.5.1.js"></script>
+    <script src="ajax.js"></script>
+</head>
+<body>
+<main class="login-form">
+    <br/>
+    <h1><b>Add incoming:</b></h1>
+    <br/><br/>
+    <div class="cotainer">
+        <div class="row justify-content-center">
+            <div class="col-sm-5">
+                <div class="card">
+                    <div class="card-body">
+                        <form  action="addincome" method="get">
+                            <div class="col-md-4 mx-auto col-12">
+                                <div class="b-select-wrap">
+                                    <input class="form-control b-select" type="number" id="amount-incoming" placeholder="Amount" required>
+                                </div>
+                            </div>
+                            <br/>
+                            <div class="form-group">
+                                <input type="checkbox" id="incoming-cb" name="permanentincome">
+                                <label for="incoming-cb">Permanent income</label>
+                            </div>
+                            <div class="col-md-4 mx-auto col-12">
+                                <div class="b-select-wrap">
+                                    <input class="form-control b-select" id="comment-incoming" type="text" name="comment" placeholder="Comment">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</main>
+<br/>
+<input type="button" class="label green" id="add-incoming" value="Add" >
+<br/><br/>
+<button type="button" class="label red" id="canBtn">Cancel</button>
+
+<script>
+      $("#canBtn").on("click",function(){
+        vm.goToHome();
+       });
+
+     function checkCB(){
+        var c=document.getElementById('incoming-cb');
+        if (c.checked) {
+            return true;
+        } else {
+            return false;
+     }
+     }
+</script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-3.5.1.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/register.css"/>
+</head>
+<body>
+<div class="login">
+    <div class="login-triangle"></div>
+
+    <h2 class="login-header">Register</h2>
+
+    <form class="login-container">
+        <p><input type="email" id="email" placeholder="Email"></p>
+        <p><input type="password" id="password" placeholder="Password"></p>
+        <p><input type="submit" id="registerbtn" value="Register"></p>
+        <p><input type="button" id="cancelbtn" value="Cancle"></input></p>
+
+    </form>
+</div>
+    <br/>
+
+</form>
+<script src="ajax.js"></script>
+<script>
+    $("#cancelbtn").on("click",function(){
+         vm.goToLogin();
+    });
+</script>
+</body>
+</html>

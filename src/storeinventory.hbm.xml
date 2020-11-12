@@ -1,0 +1,92 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="il.ac.hit.costmanagement.dm.Incoming" table="incoming">
+		<id name="id" type="int" column="user_id" >
+		</id>
+		<property name="amount" type="double">
+			<column name="amount" />
+		</property>
+		<property name="date" type="date">
+			<column name="date"/>
+		</property>
+
+		<property name="permanentIncoming" type="boolean">
+			<column name="permanent_incoming"/>
+		</property>
+
+		<property name="comment" type="string">
+			<column name="comment"/>
+		</property>
+
+		<property name="transactionId" type="int">
+			<column name="transaction_id"/>
+		</property>
+	</class>
+
+
+	<class name="il.ac.hit.costmanagement.dm.Spend" table="spend">
+		<id name="id" type="int" column="user_id" >
+		</id>
+		<property name="amount" type="double">
+			<column name="amount" />
+		</property>
+		<property name="date" type="date">
+			<column name="date"/>
+		</property>
+
+		<property name="category" type="string">
+			<column name="category"/>
+		</property>
+
+		<property name="permanentSpend" type="boolean">
+			<column name="permanent_spend"/>
+		</property>
+
+		<property name="comment" type="string">
+			<column name="comment"/>
+		</property>
+
+		<property name="transactionId" type="int">
+			<column name="transaction_id"/>
+		</property>
+	</class>
+
+
+	<class name="il.ac.hit.costmanagement.dm.TotalSpend" table="total_spend">
+		<id name="month" type="int" column="month" >
+		</id>
+		<property name="id" type="int">
+			<column name="user_id" />
+		</property>
+
+		<property name="amountSpend" type="double">
+			<column name="amount_spend" />
+		</property>
+		<property name="amountIncome" type="double">
+			<column name="amount_income"/>
+		</property>
+
+		<property name="year" type="int">
+			<column name="year"/>
+		</property>
+	</class>
+
+
+	<class name="il.ac.hit.costmanagement.dm.User" table="users">
+		<id name="id" type="int" column="user_id" >
+			<generator class="increment"/>
+		</id>
+		<property name="userName" type="string">
+			<column name="user_name" />
+		</property>
+
+		<property name="password" type="string">
+			<column name="password" />
+		</property>
+	</class>
+
+
+</hibernate-mapping>

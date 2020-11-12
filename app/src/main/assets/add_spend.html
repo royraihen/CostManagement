@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="css/add_spend_or_incoming.css"/>
+    <script src="jquery-3.5.1.js"></script>
+    <script src="ajax.js"></script>
+</head>
+<body>
+<h1><b>Add spend:</b></h1>
+<br/><br/>
+<form action="#">
+    <label for="cat-spend">Choose category:</label>
+<div class="container">
+    <div class="row" style="margin-top:10px;">
+        <div class="col-md-4 mx-auto col-12">
+            <div class="b-select-wrap">
+                <select name="cats" id="cat-spend" class="form-control b-select">
+                    <option value="Shopping">Shopping</option>
+                    <option value="Transport">Transportation</option>
+                    <option value="Restaurant">Restaurant</option>
+                    <option value="Health">Health</option>
+                    <option value="Family">Family</option>
+                    <option value="Groceries">Groceries</option>
+                    <option value="Leisure">Leisure</option>
+                    <option value="Goverment">Taxes</option>
+                    <option value="Food">Food</option>
+                </select>
+            </div>
+        </div>
+    </div>
+</div>
+    <br/>
+    <div class="col-md-4 mx-auto col-12">
+        <div class="b-select-wrap">
+            <input class="form-control b-select" type="number" id="amount-spent" placeholder="Amount" required>
+        </div>
+    </div>
+    <br/>
+    <div class="form-group">
+        <input type="checkbox" id="spend-cb" name="perm_cb">
+        <label for="spend-cb">Permanent</label>
+    </div>
+    <div class="col-md-4 mx-auto col-12">
+        <div class="b-select-wrap">
+            <input class="form-control b-select" type="description" id="comment-spend" name="descr" placeholder="Description">
+        </div>
+    </div>
+    <br/><br/>
+    <input type="button" class="label green" id="add-spend" value="Add" >
+    <br/><br/>
+    <button type="button" class="label red" id="canBtn">Cancel</button>
+</form>
+<!--
+<input type="submit" id="add-spend" value="SUBMIT"></input>
+-->
+<!--
+-->
+
+<script>
+      $("#canBtn").on("click",function(){
+        vm.goToHome();
+       });
+
+     function checkCB(){
+        var c=document.getElementById('spend-cb');
+        if (c.checked) {
+            return true;
+        } else {
+            return false;
+  }
+}
+</script>
+</body>
+</html>
